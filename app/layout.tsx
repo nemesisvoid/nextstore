@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
-import { Roboto, Open_Sans } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 import './globals.css';
-import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from '@/lib/constants';
+import { APP_DESCRIPTION, APP_NAME } from '@/lib/constants';
 import { ThemeProvider } from 'next-themes';
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: {
@@ -19,10 +20,7 @@ const roboto = Roboto({
   weight: ['100', '300', '400', '500', '700', '900'],
   display: 'swap',
 });
-const openSans = Open_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -39,6 +37,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange>
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
